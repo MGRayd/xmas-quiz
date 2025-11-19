@@ -701,22 +701,20 @@ const AdminRoundQuestionsPage: React.FC = () => {
                   />
                 </div>
 
-                {/* Text Input Option for Picture Rounds */}
-                {round?.type === RoundType.PICTURE && (
-                  <div className="form-control mb-4">
-                    <label className="label cursor-pointer">
-                      <span className="label-text">Use text input instead of multiple choice</span>
-                      <input 
-                        type="checkbox" 
-                        className="toggle toggle-primary" 
-                        checked={isTextInput}
-                        onChange={(e) => setIsTextInput(e.target.checked)}
-                      />
-                    </label>
-                  </div>
-                )}
+                {/* Text Input Option for All Round Types */}
+                <div className="form-control mb-4">
+                  <label className="label cursor-pointer">
+                    <span className="label-text">Use text input instead of multiple choice</span>
+                    <input 
+                      type="checkbox" 
+                      className="toggle toggle-primary" 
+                      checked={isTextInput}
+                      onChange={(e) => setIsTextInput(e.target.checked)}
+                    />
+                  </label>
+                </div>
                 
-                {isTextInput && round?.type === RoundType.PICTURE ? (
+                {isTextInput ? (
                   <>
                     <div className="form-control mb-4">
                       <label className="label">

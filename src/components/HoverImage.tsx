@@ -31,16 +31,18 @@ const HoverImage: React.FC<HoverImageProps> = ({
       const popupRect = popupRef.current.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
-      
-      // Check if popup would go off the right edge
+
+      // Decide vertical position based purely on where the thumbnail sits in the viewport:
+      // - If the thumbnail is in the top half, show the popup below it
+      // - If it's in the bottom half, show the popup above it
+      const isInTopHalf = containerRect.top < viewportHeight / 2;
+
+      // Check if popup would go off the right/left edge when roughly centered
       const wouldOverflowRight = containerRect.left + (popupRect.width / 2) > viewportWidth;
       const wouldOverflowLeft = containerRect.left - (popupRect.width / 2) < 0;
-      
-      // Check if popup would go off the top edge
-      const wouldOverflowTop = containerRect.top - popupRect.height < 0;
-      
+
       setPosition({
-        top: !wouldOverflowTop, // If it would overflow top, place it below
+        top: !isInTopHalf, // true => above (for bottom-half questions), false => below
         left: wouldOverflowRight ? true : wouldOverflowLeft ? false : null // Center if possible, otherwise adjust
       });
     }

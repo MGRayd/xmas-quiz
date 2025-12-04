@@ -49,13 +49,18 @@ const HoverImage: React.FC<HoverImageProps> = ({
   }, [showFullSize]);
 
   return (
-    <div className="relative inline-block" ref={containerRef}>
+    <div
+      className="relative inline-block"
+      ref={containerRef}
+      onContextMenu={(e) => e.preventDefault()}
+    >
       <img 
         src={src} 
         alt={alt} 
         className={`${thumbnailHeight} w-auto object-cover rounded-lg cursor-pointer ${className}`}
         onMouseEnter={() => setShowFullSize(true)}
         onMouseLeave={() => setShowFullSize(false)}
+        onContextMenu={(e) => e.preventDefault()}
       />
       
       {showFullSize && (
@@ -81,6 +86,7 @@ const HoverImage: React.FC<HoverImageProps> = ({
               width: 'auto',
               height: 'auto'
             }}
+            onContextMenu={(e) => e.preventDefault()}
           />
         </div>
       )}

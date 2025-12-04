@@ -46,7 +46,10 @@ const QuestionImage: React.FC<QuestionImageProps> = ({
   }
 
   return (
-    <div className="mb-4 flex justify-center">
+    <div
+      className="mb-4 flex justify-center"
+      onContextMenu={(e) => e.preventDefault()}
+    >
       <HoverImage 
         src={imageToShow} 
         alt={altText} 

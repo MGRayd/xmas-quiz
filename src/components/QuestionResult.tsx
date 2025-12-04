@@ -39,7 +39,6 @@ const QuestionResult: React.FC<QuestionResultProps> = ({
           {/* Cover Image (if available) - shown larger */}
           {question.coverImageUrl && (
             <div className="flex flex-col items-center mb-4">
-              <p className="text-xl font-christmas mb-2">Movie Cover</p>
               <HoverImage 
                 src={question.coverImageUrl} 
                 alt="Cover Image"
@@ -54,7 +53,6 @@ const QuestionResult: React.FC<QuestionResultProps> = ({
           {/* Normal Image */}
           {question.normalImageUrl && (
             <div className="flex flex-col items-center mt-4">
-              <p className="text-sm mb-1">Scene from the movie</p>
               <HoverImage 
                 src={question.normalImageUrl} 
                 alt="Answer Image"
